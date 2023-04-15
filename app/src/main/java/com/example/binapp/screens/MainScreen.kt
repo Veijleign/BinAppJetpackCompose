@@ -33,6 +33,7 @@ import com.example.binapp.BottomBarScreen
 import com.example.binapp.BottomNavGraph
 import com.example.binapp.model.binData.BinData
 import com.example.binapp.ui.theme.Purple200
+import com.example.binapp.ui.theme.TealX
 
 @Composable
 fun NewMainScreen() {
@@ -81,7 +82,7 @@ fun TopBar() {
                 )
             }
         },
-        backgroundColor = Color.DarkGray
+        backgroundColor = TealX
     )
 }
 @Composable
@@ -94,7 +95,7 @@ fun BottomBar(
     val currentRoute = navBackStackEntry?.destination?.route
     BottomNavigation(
         modifier = modifier,
-        backgroundColor = Color.DarkGray,
+        backgroundColor = TealX,
         elevation = 5.dp
     ) {
         items.forEach { item ->

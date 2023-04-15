@@ -13,7 +13,6 @@ import com.example.binapp.model.binData.Country
 import com.example.binapp.model.binData.NumberBin
 import com.example.binapp.retrofit.RetrofitClient
 import com.example.binapp.retrofit.RetrofitServices
-import com.example.binapp.screens.bottomScreens.MainScreen
 import com.example.binapp.screens.NewMainScreen
 import com.example.binapp.ui.theme.BinAppTheme
 import kotlinx.coroutines.CoroutineScope
@@ -28,25 +27,6 @@ class MainActivity : ComponentActivity() {
 
 
         setContent {
-            /*val currentData = remember {
-                mutableStateOf(
-                    BinData( // ???
-                        Bank("", "", "", ""),
-                        "",
-                        Country("", "", "", 0f, 0f, "", ""),
-                        NumberBin(0, false),
-                        false,
-                        "",
-                        ""
-                    )
-                )
-            }*/
-
-            /*MainScreen(currentData, onClickSearch = { // c помощью it вытаскиваем данные из
-                // другого класса при нажатии на кнопку
-                getData(it, currentData)
-                Log.d("TestBinNumberTag", "Value: $it")
-            })*/
 
             NewMainScreen()
         }

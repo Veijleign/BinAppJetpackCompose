@@ -1,5 +1,9 @@
 package com.example.binapp.model.binData
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class BinData(
     val bank: Bank,
     val brand: String,
@@ -8,4 +12,4 @@ data class BinData(
     val prepaid: Boolean,
     val scheme: String,
     val type: String
-)
+): Parcelable

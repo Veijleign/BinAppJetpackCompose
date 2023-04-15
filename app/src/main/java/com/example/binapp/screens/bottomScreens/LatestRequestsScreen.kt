@@ -12,12 +12,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import com.example.binapp.ui.theme.Teal200
 
 @Composable
 fun LatestRequestsScreen() {
     Box(modifier = Modifier
         .fillMaxSize()
-        .background(Color.LightGray)
+        .background(Teal200)
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
@@ -28,7 +29,6 @@ fun LatestRequestsScreen() {
                 fontWeight = FontWeight.Bold,
                 color = Color.White
             )
-
         }
     }
 }

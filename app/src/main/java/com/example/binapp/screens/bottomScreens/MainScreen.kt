@@ -13,10 +13,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,8 +25,15 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.binapp.model.binData.Bank
 import com.example.binapp.model.binData.BinData
+import com.example.binapp.model.binData.Country
+import com.example.binapp.model.binData.NumberBin
 import com.example.binapp.ui.theme.Purple200
+import com.example.binapp.ui.theme.Teal200
+import com.example.binapp.ui.theme.TealX
+import com.example.binapp.viewModel.MyViewModel
 
 @Composable
 fun MainScreen(
@@ -42,7 +47,6 @@ fun MainScreen(
     }
 
     val context = LocalContext.current
-
     val uriHandler = LocalUriHandler.current
 
     //val testIntent = remember { Intent(Intent.ACTION_VIEW, Uri.parse(receivedData.value.bank.url)) }
@@ -50,7 +54,7 @@ fun MainScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.LightGray)
+            .background(Teal200)
             .padding(start = 3.dp, end = 3.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -215,7 +219,7 @@ fun MainScreen(
                 // verticalArrangement = Arrangement.Center // can be deleted or added, doesn't matter
             ) {
                 Text(text = "BANK", color = Color.Black.copy(alpha = 0.3f))
-                Text(text = "${receivedData.value.bank.name}, ${receivedData.value.bank.city}")
+                Text(text = "${receivedData.value.bank.name} ${receivedData.value.bank.city}")
                 Text(text = receivedData.value.bank.phone, modifier = Modifier.clickable {
                     val phoneNumber: String = "tel:" + receivedData.value.bank.phone
                     val newString = phoneNumber.substringBefore(" OR")
@@ -267,7 +271,8 @@ fun MainScreen(
                 onClickSearch(searchBIN.value) // check difference: .invoke(searchBIN.value)
             },
             border = BorderStroke(1.dp, Color.DarkGray),
-            shape = RoundedCornerShape(50)
+            shape = RoundedCornerShape(50),
+            colors = ButtonDefaults.buttonColors(backgroundColor = TealX)
         ) {
             Text(
                 text = "Find BIN",
